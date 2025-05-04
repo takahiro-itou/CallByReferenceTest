@@ -48,12 +48,12 @@ Node * initializeList()
 **    リストを表示する。
 **/
 
-void  printList(Node * head)
+void  printList(FILE * fp, Node * head)
 {
     for ( Node * p = head; p != nullptr; p = p->next ) {
-        printf("%d, ", p->value);
+        fprintf(fp, "%d, ", p->value);
     }
-    printf("\n");
+    fprintf(fp, "\n");
 }
 
 
@@ -96,8 +96,8 @@ void sortList(Node * head)
             }
             prev = p;
         }
-        fprintf("Changed = %d\n", flagChange);
-        printList(headNew);
+        fprintf(stderr, "Changed = %d\n", flagChange);
+        printList(stderr, headNew);
     } while (flagChange > 0);
 }
 
@@ -109,12 +109,12 @@ void sortList(Node * head)
 int main(int argc, char * argv[])
 {
     Node * head = initializeList();
-    printList(head);
+    printList(stdout, head);
 
     sortList(head);
 
-    printf("\nSorted List:\n");
-    printList(head);
+    fprintf(stdout, "\nSorted List:\n");
+    printList(stdout, head);
 
     return ( 0 );
 }
