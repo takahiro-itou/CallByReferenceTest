@@ -39,3 +39,15 @@ Node * initializeList()
     return ( pn3 );
 }
 
+/**
+**    リストを表示する。
+**/
+
+void  printList(Node * head)
+{
+    for ( Node * p = head; p != nullptr; p = p->next ) {
+        printf("%d, ", p-.value);
+    }
+    printf("\n");
+}
+
