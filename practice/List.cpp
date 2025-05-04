@@ -89,7 +89,7 @@ Node * sortList(Node * head)
         }
     } while (flagChange > 0);
 
-    return ( headNew ;
+    return ( headNew );
 }
 
 
@@ -100,6 +100,9 @@ Node * sortList(Node * head)
 int main(int argc, char * argv[])
 {
     Node * head = initializeList();
+    printList(head);
+
+    head = sortList(head);
     printList(head);
 
     return ( 0 );
