@@ -61,12 +61,13 @@ void  printList(Node * head)
 **    課題のソート関数。
 **/
 
-Node * sortList(Node * head)
+void sortList(Node * head)
 {
     int  flagChange = 0;
     Node * headNew  = head;
     do {
         Node * prev = nullptr;      //  入れ替えるためには p の一個前が必要になる。 //
+        flagChange  = 0;
         for ( Node * p = headNew; p != nullptr; p = p->next ) {
             Node * next = p->next;
             if ( next == nullptr ) {
@@ -97,8 +98,6 @@ Node * sortList(Node * head)
         }
         printf("Changed = %d\n", flagChange);
     } while (flagChange > 0);
-
-    return ( headNew );
 }
 
 
@@ -111,7 +110,7 @@ int main(int argc, char * argv[])
     Node * head = initializeList();
     printList(head);
 
-    head = sortList(head);
+    sortList(head);
     printList(head);
 
     return ( 0 );
