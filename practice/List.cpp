@@ -67,10 +67,14 @@ Node * sortList(Node * head)
     Node * headNew  = head;
     do {
         Node * prev = nullptr;      //  入れ替えるためには p の一個前が必要になる。 //
-        for ( Node * p = headNew; p->next != nullptr; p = p->next ) {
+        for ( Node * p = headNew; p != nullptr; p = p->next ) {
             Node * next = p->next;
-            //  p と next の value を比べて、                       //
-            //  順番になっていなければ入れ替える (バブルソート）    //
+            if ( next == nullptr ) {
+                break;      //  末尾に到達したのでやることが無い。  //
+            }
+            printf("check p(%d) & next(%d)\n", p->value, p->next->value);
+            //  p と next の value を比べて、       //
+            //  順番になっていなければ入れ替える    //
             if ( p->value > next->value ) {
                 if ( p == headNew ) {
                     //  先頭では例外処理をする。    //
@@ -84,9 +88,14 @@ Node * sortList(Node * head)
                     prev->next = next;
                 }
                 ++ flagChange;
+                //  入れ替えが発生したので p を改めて prev->next に戻す。   //
+                //  そうしないと次のループで一個要素が飛ばされてしまう。    //
+                //  なお prev->next は今 next になっているので下記で良い。  //
+                p = next;
             }
             prev = p;
         }
+        printf("Changed = %d\n", flagChange);
     } while (flagChange > 0);
 
     return ( headNew );
