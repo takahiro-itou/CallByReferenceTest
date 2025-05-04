@@ -1,4 +1,9 @@
 
+#if 0
+g++ -g -O0 -o practice.exe List.cpp
+exit 0
+#endif
+
 #include    <stdio.h>
 
 /**   リストの各ノード（要素）  **/
@@ -46,8 +51,20 @@ Node * initializeList()
 void  printList(Node * head)
 {
     for ( Node * p = head; p != nullptr; p = p->next ) {
-        printf("%d, ", p-.value);
+        printf("%d, ", p->value);
     }
     printf("\n");
 }
 
+
+/**
+**    エントリポイント。
+**/
+
+int main(int argc, char * argv[])
+{
+    Node * head = initializeList();
+    printList(head);
+
+    return ( 0 );
+}
