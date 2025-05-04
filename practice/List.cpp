@@ -99,6 +99,11 @@ void sortList(Node * head)
         fprintf(stderr, "Changed = %d\n", flagChange);
         printList(stderr, headNew);
     } while (flagChange > 0);
+
+    //  ここで先頭が変わっている可能性がある。      //
+    //  新しい先頭は headNew  に代入されている。    //
+    head = headNew;
+    printList(stderr, head);
 }
 
 
