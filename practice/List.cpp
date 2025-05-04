@@ -58,6 +58,42 @@ void  printList(Node * head)
 
 
 /**
+**    課題のソート関数。
+**/
+
+Node * sortList(Node * head)
+{
+    int  flagChange = 0;
+    Node * headNew  = head;
+    do {
+        Node * prev = nullptr;      //  入れ替えるためには p の一個前が必要になる。 //
+        for ( Node * p = headNew; p->next != nullptr; p = p->next ) {
+            Node * next = p->next;
+            //  p と next の value を比べて、                       //
+            //  順番になっていなければ入れ替える (バブルソート）    //
+            if ( p->value > next->value ) {
+                if ( p == headNew ) {
+                    //  先頭では例外処理をする。    //
+                    p->next = next->next;
+                    next->next = p;
+                    //  新しい先頭を記録する。      //
+                    headNew = next;
+                } else {
+                    p->next = next->next;
+                    next->next = p;
+                    prev->next = next;
+                }
+                ++ flagChange;
+            }
+            prev = p;
+        }
+    } while (flagChange > 0);
+
+    return ( headNew ;
+}
+
+
+/**
 **    エントリポイント。
 **/
 
