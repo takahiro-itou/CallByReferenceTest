@@ -73,7 +73,7 @@ void sortList(Node * head)
             if ( next == nullptr ) {
                 break;      //  末尾に到達したのでやることが無い。  //
             }
-            printf("check p(%d) & next(%d)\n", p->value, p->next->value);
+            //  printf("check p(%d) & next(%d)\n", p->value, p->next->value);
             //  p と next の value を比べて、       //
             //  順番になっていなければ入れ替える    //
             if ( p->value > next->value ) {
@@ -96,7 +96,8 @@ void sortList(Node * head)
             }
             prev = p;
         }
-        printf("Changed = %d\n", flagChange);
+        fprintf("Changed = %d\n", flagChange);
+        printList(headNew);
     } while (flagChange > 0);
 }
 
@@ -111,6 +112,8 @@ int main(int argc, char * argv[])
     printList(head);
 
     sortList(head);
+
+    printf("\nSorted List:\n");
     printList(head);
 
     return ( 0 );
